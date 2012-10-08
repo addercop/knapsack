@@ -1,23 +1,21 @@
 #!/usr/bin/python
-#main driver for genetic algorithm application.
+'''Main driver for genetic algorithm application.'''
+
 import sys
 
-import genetic
 import knapsack
+import solutions
 
 sys.setrecursionlimit(2000)
 
+
 def main():
-	if len(sys.argv) < 2:
-		print "Usage: main.py FILE"
-		return
-	instance = knapsack.get_binaryknapsackinstance_from_file(sys.argv[1])
-	print instance
-
-	genetic.genetic_algorithm(instance)
-
-	if instance.size() <= 30:
-		knapsack.branch_and_bound(instance)
+    '''Read a 0-1 knapsack problem instance from a file and solve it.'''
+    if len(sys.argv) < 2:
+        print "Usage: main.py FILE"
+        return
+    problem = knapsack.get_problem_from_file(sys.argv[1])
+    solutions.solve(problem)
 
 if __name__ == "__main__":
-	main()
+    main()
