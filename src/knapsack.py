@@ -59,7 +59,7 @@ def get_random_solution(instance):
     random.shuffle(indexes)
     total_weight = 0
     for i in indexes:
-        item = instance.inventory.get_bit(i)
+        item = instance.inventory.item_at(i)
         if total_weight + item.weight > instance.knapsack_capacity:
             break
         total_weight += item.weight
